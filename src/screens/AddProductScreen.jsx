@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { View, TextInput, Button, StyleSheet, ToastAndroid } from "react-native";
+import { View, TextInput, Button, StyleSheet, ToastAndroid, TouchableOpacity, Text } from "react-native";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
@@ -28,9 +28,10 @@ const AddProductScreen = ({ navigation }) => {
         nombre: nombre,
         codigo: codigo,
         precio: precio,
+        createdAt: new Date().toISOString().slice(0, 10),
       });
 
-      ToastAndroid.show("Producto agregado con éxito", ToastAndroid.SHORT);
+      ToastAndroid.show("Producto agregado con éxito", ToastAndroid.SHORT, ToastAndroid.CENTER);
 
       navigation.goBack();
 
@@ -40,6 +41,7 @@ const AddProductScreen = ({ navigation }) => {
     } catch (error) {
       console.error("Error al agregar el producto:", error);
       // Maneja el error y muestra un mensaje al usuario
+      ToastAndroid.show("Error al agregar el producto", ToastAndroid.SHORT, ToastAndroid.CENTER);
     }
   };
 
@@ -73,14 +75,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F7F7F7",
     padding: 20,
+    justifyContent: "center",
   },
   input: {
-    height: 40,
-    borderColor: "#E6E6E6",
-    borderWidth: 1,
-    borderRadius: 8,
+    height: 60,
+    borderColor: "#ccc",
+    borderWidth: 0.4,
+    borderRadius: 30,
     marginBottom: 15,
-    paddingLeft: 10,
+    paddingLeft: 20,
+    fontSize: 18,
   },
 });
 

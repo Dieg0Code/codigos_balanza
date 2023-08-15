@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0F0F0',
         shadowOpacity: 0.3,
         shadowRadius: 2,
-        shadowColor: '#FFD700',
+        shadowColor: '#19C37D',
         marginHorizontal: 4,
         marginVertical: 6,
         width: 334,
-        height: 128,
+        height: 145,
     },
     cardContent: {
         marginHorizontal: 18,

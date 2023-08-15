@@ -57,8 +57,9 @@ const firebaseConfig = {
       return (
         <Card>
           <Text style={styles.textStyleNombre}>{item.nombre}</Text>
+          <Text style={styles.textStylePrecio}>${item.precio}</Text>
           <Text style={styles.textStyleCodigo}>{item.codigo}</Text>
-          <Text style={styles.textStyleNombre}>$ {item.precio}</Text>
+          <Text style={styles.textStyleCreatedAt}>{item.createdAt}</Text>
         </Card>
       );
     };
@@ -77,7 +78,6 @@ const firebaseConfig = {
           keyExtractor={(item) => item.id.toString()}
           renderItem={ItemView}
         />
-       <Text>hola</Text>
       </View>
     );
   };
@@ -91,7 +91,19 @@ const firebaseConfig = {
       margin: 10,
     },
     textStyleCodigo: {
+      fontSize: 18,
+      color: "#7B7B7B",
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+    textStylePrecio: {
       fontSize: 25,
+      color: "#FF6347",
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+    textStyleCreatedAt: {
+      fontSize: 15,
       color: "#7B7B7B",
       fontWeight: "bold",
       textAlign: "center",
@@ -111,17 +123,6 @@ const firebaseConfig = {
     },
     viewStyle: {
       backgroundColor: "#F7F7F7",
-    },
-    addButton: {
-      backgroundColor: "#19C37D",
-      padding: 10,
-      borderRadius: 8,
-      alignSelf: "flex-end",
-      margin: 10,
-    },
-    addButtonText: {
-      color: "white",
-      fontWeight: "bold",
     },
   });
   
