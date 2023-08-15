@@ -17,13 +17,14 @@ const styles = StyleSheet.create({
     card: {
         borderRadius: 50,
         elevation: 3,
-        backgroundColor: '#19C37D',
+        backgroundColor: '#F0F0F0',
         shadowOpacity: 0.3,
         shadowRadius: 2,
+        shadowColor: '#FFD700',
         marginHorizontal: 4,
         marginVertical: 6,
         width: 334,
-        height: 100,
+        height: 128,
     },
     cardContent: {
         marginHorizontal: 18,

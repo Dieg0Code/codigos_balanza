@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
-import { TextInput, View, FlatList, Text, StyleSheet } from "react-native";
+import { TextInput, View, FlatList, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { getFirestore, collection, getDocs, onSnapshot } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
@@ -51,13 +51,14 @@ const firebaseConfig = {
       });
       setFilterData(newData);
       setSearch(text);
-    };
+    };// tempus fugitS
   
     const ItemView = ({ item }) => {
       return (
         <Card>
           <Text style={styles.textStyleNombre}>{item.nombre}</Text>
           <Text style={styles.textStyleCodigo}>{item.codigo}</Text>
+          <Text style={styles.textStyleNombre}>$ {item.precio}</Text>
         </Card>
       );
     };
@@ -76,6 +77,7 @@ const firebaseConfig = {
           keyExtractor={(item) => item.id.toString()}
           renderItem={ItemView}
         />
+       <Text>hola</Text>
       </View>
     );
   };
@@ -83,22 +85,22 @@ const firebaseConfig = {
   const styles = StyleSheet.create({
     textStyleNombre: {
       fontSize: 18,
-      color: "#ECECF1",
+      color: "#2B2B2B",
       fontWeight: "bold",
       textAlign: "center",
       margin: 10,
     },
     textStyleCodigo: {
       fontSize: 25,
-      color: "#ECECF1",
+      color: "#7B7B7B",
       fontWeight: "bold",
       textAlign: "center",
     },
     textInputStyle: {
       height: 40,
-      borderColor: "#19C37D",
-      backgroundColor: "#ECECF1",
-      borderWidth: 1,
+      borderColor: "#FFD700",
+      backgroundColor: "#F0F0F0",
+      borderWidth: 3,
       margin: 60,
       borderRadius: 20,
       paddingLeft: 20,
@@ -108,7 +110,18 @@ const firebaseConfig = {
       paddingBottom: 800,
     },
     viewStyle: {
-      backgroundColor: "#343541",
+      backgroundColor: "#F7F7F7",
+    },
+    addButton: {
+      backgroundColor: "#19C37D",
+      padding: 10,
+      borderRadius: 8,
+      alignSelf: "flex-end",
+      margin: 10,
+    },
+    addButtonText: {
+      color: "white",
+      fontWeight: "bold",
     },
   });
   
