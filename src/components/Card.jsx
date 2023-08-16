@@ -5,9 +5,7 @@ const Card = (props) => {
 
     return (
         <View style={styles.card}>
-            <View style={styles.cardContent}>
-                { props.children }
-            </View>
+            { props.children }
         </View>
     )
 
@@ -16,10 +14,10 @@ const Card = (props) => {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 50,
-        elevation: 3,
+        elevation: 7,
         backgroundColor: '#F0F0F0',
         shadowOpacity: 0.3,
-        shadowRadius: 2,
+        shadowRadius: 9,
         shadowColor: '#19C37D',
         marginHorizontal: 4,
         marginVertical: 6,

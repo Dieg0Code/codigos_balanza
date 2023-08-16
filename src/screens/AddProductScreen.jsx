@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { View, TextInput, Button, StyleSheet, ToastAndroid, TouchableOpacity, Text } from "react-native";
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, ToastAndroid } from "react-native";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { Ionicons } from "@expo/vector-icons";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAotF5xJnR1pDdsSf0ePQYjjxwWqDqonNA",
@@ -24,7 +25,6 @@ const AddProductScreen = ({ navigation }) => {
   const handleAddProduct = async () => {
     try {
       await addDoc(collection(db, "productos"), {
-        id: Math.random().toString(),
         nombre: nombre,
         codigo: codigo,
         precio: precio,
@@ -65,7 +65,10 @@ const AddProductScreen = ({ navigation }) => {
         value={precio}
         onChangeText={setPrecio}
       />
-      <Button title="Agregar Producto" onPress={handleAddProduct} color="#19C37D" />
+      <TouchableOpacity style={styles.addButton} onPress={handleAddProduct}>
+        <Text style={styles.addButtonText}>Agregar Producto</Text>
+        <Ionicons name="add" size={24} color="#fff" style={styles.addIcon} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -79,12 +82,37 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 60,
-    borderColor: "#ccc",
-    borderWidth: 0.4,
-    borderRadius: 30,
+    borderRadius: 15,
+    backgroundColor: "#F7F7F7",
+    shadowColor: "#19C37D",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 6,
     marginBottom: 15,
     paddingLeft: 20,
     fontSize: 18,
+    borderColor: "#19C37D",
+    borderWidth: 0.3,
+  },
+  addButton: {
+    backgroundColor: "#19C37D",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 60,
+    borderRadius: 30,
+  },
+  addButtonText: {
+    color: "#fff",
+    fontSize: 18,
+    marginRight: 10,
+  },
+  addIcon: {
+    alignSelf: "center",
   },
 });
 
